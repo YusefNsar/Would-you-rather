@@ -1,0 +1,111 @@
+.leaderboard {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.leaderboard-item {
+  width: 450px;
+  height: 150px;
+  position: relative;
+  background-color: #fff;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 16px -5px #777;
+}
+.rank {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background-color: hsl(0, 0%, 51%);
+  line-height: 60px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.rank.order1 {
+  background-color: hsl(54, 77%, 54%);
+  font-style: italic;
+}
+.rank.order2 {
+  background-color: hsl(187, 10%, 80%);
+  font-style: italic;
+}
+.rank.order3 {
+  background-color: hsl(19, 81%, 29%);
+  font-style: italic;
+}
+
+.user-info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px 20px;
+}
+.user-image {
+  height: 75px;
+  border-radius: 50%;
+}
+.user-name {
+  margin-left: 20px;
+  font-size: 22px;
+  font-weight: 600;
+  font-family:cursive;
+}
+
+.user-scores {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 18px;
+  margin-top: 17px;
+}
+.emoji {
+  font-size: 25px;
+  margin-right: 5px;
+  position: relative;
+  top: 4px;
+}
+.pre-scores {
+  flex: 0 1 66%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.real-score {
+  flex: 0 1 33%;
+}
+
+@media (max-width: 768px) {
+  .leaderboard {
+    padding-left: 30px;
+  }
+  .leaderboard-item {
+    width: 300px;
+    height: 100px;
+    margin-bottom: 15px;
+  }
+  .rank {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
+  .user-info {
+    padding: 6px 10px;
+  }
+  .user-image {
+    height: 50px;
+  }
+  .user-name {
+    margin-left: 13px;
+    font-size: 18px;
+  }
+  .user-scores {
+    font-size: 16px;
+    margin-top: 0px;
+  }
+  .emoji {
+    font-size: 22px;
+    top: 3px;
+  }
+}

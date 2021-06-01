@@ -1,0 +1,116 @@
+$msgBgColor: hsl(207, 90%, 80%);
+@mixin message() {
+  background-color: $msgBgColor;
+  border-radius: 50px;
+  line-height: 50px;
+}
+@mixin shadow() {
+  box-shadow: 0px 5px 14px 0px #999;
+}
+
+.poll-container {
+  display: grid;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 60px;
+  padding: 20px 12px;
+  border: 2px double hsl(0, 0%, 70%);
+  background-color: hsl(0, 0%, 100%);
+  @include shadow;
+  max-width: 600px;
+  min-height: 400px;
+}
+
+.upper-grid {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.upper-message {
+  @include message;
+  position: relative;
+  width: 70%;
+  height: 50px;
+  color: black;
+  font-size: 30px;
+}
+.upper-message:after {
+  border-right: solid 24px transparent;
+  border-left: solid 24px transparent;
+  border-top: solid 24px $msgBgColor;
+  transform: translateX(-50%);
+  position: absolute;
+  z-index: 10;
+  content: "";
+  top: 100%;
+  left: 50%;
+  height: 0;
+  width: 0;
+}
+
+.middle-grid {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.avatar {
+  height: 78%;
+  width: 24%;
+  border-radius: 50%;
+}
+.message {
+  @include message;
+  width: 34%;
+  height: 50px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0px 5px;
+}
+
+.lower-grid {
+  display: flex;
+  justify-content: center;
+  align-items: space-between;
+  flex-wrap: wrap;
+}
+.username {
+  width: 100%;
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .poll-container {
+    max-width: 300px;
+    max-height: 400px;
+  }
+  .upper-message {
+    font-size: 20px;
+    width: 100%;
+  }
+  .message {
+    font-size: 12px;
+    width: 40%;
+    max-width: 130px;
+  }
+  .username {
+    margin-bottom: 10px;
+  }
+  .view-poll-btn {
+    width: 55%;
+    height: 40%;
+    font-size: 14px;
+    padding: 0.5rem 1rem;
+  }
+  .avatar {
+    height: 82%;
+    width: 25%;
+  }
+  // .upper-message {
+  //   width: 200px;
+  // }
+}

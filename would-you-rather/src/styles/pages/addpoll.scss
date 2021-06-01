@@ -1,0 +1,29 @@
+.heading {
+  padding-top: 30px;
+  padding-bottom: 35px;
+  font-size: 40px;
+}
+.or {
+  display: inline-block;
+  margin: 0 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.add-btn {
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 30px;
+  }
+  .or,
+  .options {
+    font-size: 16px;
+    display: block;
+  }
+  .add-btn {
+    font-size: 12px;
+    padding: 0.5rem 1rem;
+  }
+}
