@@ -1,18 +1,23 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import "../styles/pages/leaderboard.scss";
-import { useHistory } from 'react-router-dom'
+import Login from './Login'
 
 const Leaderboard = ({ bestUsers, authUser }) => {
-  const history = useHistory()
+  const [showLog, setShowLog] = useState(false)
 
   useEffect(() => {
     if(authUser === "") {
-      history.push('/login')
-      alert("Sorry, you should log in first.")
+      setShowLog(true)
+    } else {
+      setShowLog(false)
     }
-  }, [authUser, history])
+  }, [authUser])
+
+  if(showLog) {
+    return <Login toHomePage={false} showPage={() => setShowLog(false)}/>
+  }
 
   return (
     <div className="leaderboard">

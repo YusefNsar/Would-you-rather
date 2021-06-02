@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { handleAnswerPoll } from "../redux/actions/polls";
 import "../styles/pages/pollpage.scss";
-import { useHistory } from 'react-router-dom'
+import Login from './Login'
 
 const PollPage = ({
   isAnswered,
@@ -18,14 +18,19 @@ const PollPage = ({
   percentage2,
 }) => {
   const [option, setOption] = useState(isAnswered);
-  const history = useHistory()
+  const [showLog, setShowLog] = useState(false)
 
   useEffect(() => {
     if(authUser === "") {
-      history.push('/login')
-      alert("Sorry, you should log in first.")
+      setShowLog(true)
+    } else {
+      setShowLog(false)
     }
-  }, [authUser, history])
+  }, [authUser])
+
+  if(showLog) {
+    return <Login toHomePage={false} showPage={() => setShowLog(false)}/>
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,6 +38,10 @@ const PollPage = ({
     dispatch(handleAnswerPoll({ authUser, qID: poll.id, answer }));
     isAnswered = option;
   };
+
+  if (!poll) {
+    return <p className="no-results">ERROR 404: didn't found that poll</p>
+  }
 
   const Options =
     isAnswered !== 0 ? (

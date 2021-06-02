@@ -2,20 +2,20 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { setAuthUser } from "../redux/actions/authUser";
-import "../styles/pages/login.scss";
 import { Link, useHistory } from "react-router-dom";
+import "../styles/pages/login.scss";
 
-const Login = ({ authUser, users, dispatch }) => {
+const Login = ({ authUser, users, dispatch, showPage }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
 
   useEffect(() => {
-    if (authUser !== "") {
+    if (authUser !== "" && !showPage) {
       alert("You are already logged in");
       history.push("/");
     }
-  }, [authUser, history]);
+  }, [authUser, history, showPage]);
 
   const handleSubmit = (e) => {
     if (username !== "" && password !== "") {
@@ -28,7 +28,11 @@ const Login = ({ authUser, users, dispatch }) => {
       } else {
         if (users[userId].password === password) {
           dispatch(setAuthUser(userId));
-          history.push("/");
+          if(!showPage) {
+            history.push("/");
+          } else {
+            showPage();
+          }
         } else {
           alert("wrong password");
         }
@@ -41,7 +45,7 @@ const Login = ({ authUser, users, dispatch }) => {
   return (
     <div className="login-page">
       <h2 className="heading">Would you rather ?</h2>
-      <h3 className="main-header">Log in</h3>
+      <h3 className="main-header">{showPage ? "You should log in first" : "Log in"}</h3>
       <form className="login-form">
         <input
           type="text"

@@ -4,18 +4,25 @@ import { connect } from "react-redux";
 import "../styles/pages/addpoll.scss";
 import { handleAddPoll } from "../redux/actions/polls";
 import { useHistory } from "react-router-dom";
+import Login from './Login'
 
 const AddPoll = ({ authUser, dispatch }) => {
   const [text1, setText1] = useState("");
   const [text2, setText2] = useState("");
-  const history = useHistory();
+  const [showLog, setShowLog] = useState(false)
+  const history = useHistory()
 
   useEffect(() => {
     if(authUser === "") {
-      history.push('/login')
-      alert("Sorry, you should log in first.")
+      setShowLog(true)
+    } else {
+      setShowLog(false)
     }
-  }, [authUser, history])
+  }, [authUser])
+
+  if(showLog) {
+    return <Login toHomePage={false} showPage={() => setShowLog(false)}/>
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
