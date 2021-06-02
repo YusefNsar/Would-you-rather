@@ -3,8 +3,6 @@ import { receivePolls } from "./polls";
 import { receiveUsers } from "./users";
 import { showLoading, hideLoading } from 'react-redux-loading'
 
-//sarahedo - johndoe - tylermcginnis
-
 export function handleRecevieData() {
   return async(dispatch) => {
     dispatch(showLoading())

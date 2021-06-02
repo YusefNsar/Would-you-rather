@@ -30,3 +30,6 @@ The app have the following pages:
 
 ## Note
 - Don't tell any body but the password of the three default users is *123*
+- you can log using usernames not the IDs of them in the fake data i.e. use 'sarah edo' or 'Sarah Edo' for username not 'sarahedo'
+  
+##### Made by Yusef Nsar 
