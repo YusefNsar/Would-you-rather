@@ -7,6 +7,7 @@ export function setAuthUser(id) {
     id
   }
 }
+
 export function logoutUser() {
   return {
     type: LOGOUT_USER
